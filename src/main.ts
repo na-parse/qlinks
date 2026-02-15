@@ -8,6 +8,19 @@ import links from './links.json'
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 
+// =============================================================================
+// Header
+// =============================================================================
+
+const header = document.createElement('h1')
+header.className = 'qlinks-header'
+header.textContent = 'na-parse qlinks> '
+app.appendChild(header)
+
+// =============================================================================
+// Link tiles
+// =============================================================================
+
 ;(links as QuickLink[]).forEach((link) => {
   const anchor = document.createElement('a')
   anchor.href = link.url
