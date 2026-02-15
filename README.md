@@ -89,9 +89,8 @@ server {
     listen 443 ssl;
     server_name qlinks.unit03.net;
 
-    # SSL certs (adjust paths to match your setup)
-    ssl_certificate     /etc/letsencrypt/live/unit03.net/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/unit03.net/privkey.pem;
+    ssl_certificate     /etc/letsencrypt/live/qlinks.unit03.net/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/qlinks.unit03.net/privkey.pem;
 
     root /var/www/qlinks/dist;
     index index.html;
@@ -154,3 +153,67 @@ To add or change a link:
 1. Edit `src/links.json`
 2. Place the icon PNG in `public/icons/`
 3. Rebuild and deploy
+
+## Sourcing Icons
+
+Most websites ship high-quality icons that are designed to look good on home
+screens and bookmark grids. There are two reliable ways to find them:
+
+### 1. Apple Touch Icon (best quality)
+
+When Apple introduced "Add to Home Screen" on iPhone, they created a
+convention: sites place a high-res PNG (typically 180x180) at a well-known
+path.  Most major sites support this, making it the best source for crisp
+grid icons.
+
+Try these URLs for any site (replace `example.com`):
+
+```
+https://example.com/apple-touch-icon.png
+https://example.com/apple-touch-icon-precomposed.png
+```
+
+If neither works, view the page source and look for a `<link>` tag:
+
+```html
+<link rel="apple-touch-icon" href="/path/to/icon.png">
+```
+
+The `href` gives you the actual path. Some sites use a CDN URL instead of
+a local path.
+
+**Examples that worked for this project:**
+
+| Site | URL |
+|---|---|
+| Ars Technica | `https://arstechnica.com/apple-touch-icon.png` |
+| Amazon | `https://www.amazon.com/apple-touch-icon.png` |
+| eBay | `https://www.ebay.com/apple-touch-icon.png` |
+
+### 2. Google Favicon Service (fallback)
+
+Google runs a public API that returns any site's favicon in various sizes.
+It's useful when a site doesn't offer an apple-touch-icon, or when you want
+a quick grab without digging through source:
+
+```
+https://www.google.com/s2/favicons?domain=example.com&sz=128
+```
+
+The `sz` parameter controls the size (common values: 32, 64, 128, 256).
+Use the largest size available for the best result in the grid.
+
+**Tradeoffs:**
+
+| Method | Pros | Cons |
+|---|---|---|
+| Apple Touch Icon | Highest resolution, designed for grids | Not every site has one |
+| Google Favicon API | Works for any site, easy one-liner | Smaller sizes, may look blurry |
+
+### Tips
+
+- **Save as PNG** — the grid renders `<img>` tags, so PNG works universally
+- **Keep sizes consistent** — 128x128 or 180x180 work well in the 4-column
+  grid; larger files are fine since Vite doesn't resize them
+- **Check visually** — some apple-touch-icons have tight padding or odd
+  backgrounds; the Google API result might actually look better in some cases
