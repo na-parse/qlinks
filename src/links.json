@@ -1,0 +1,42 @@
+[
+  {
+    "label": "Ars Technica",
+    "url": "https://arstechnica.com/",
+    "icon": "/icons/arstechnica.png"
+  },
+  {
+    "label": "Google News",
+    "url": "https://news.google.com/",
+    "icon": "/icons/gnews.png"
+  },
+  {
+    "label": "YouTube",
+    "url": "https://www.youtube.com/feed/subscriptions",
+    "icon": "/icons/ytube.png"
+  },
+  {
+    "label": "REI Capital One",
+    "url": "https://rei.capitalone.com/",
+    "icon": "/icons/reicc.png"
+  },
+  {
+    "label": "Amazon",
+    "url": "https://www.amazon.com",
+    "icon": "/icons/amazon.png"
+  },
+  {
+    "label": "The War Zone",
+    "url": "https://www.twz.com",
+    "icon": "/icons/warzone.png"
+  },
+  {
+    "label": "eBay",
+    "url": "https://www.ebay.com/mys/overview",
+    "icon": "/icons/ebay.png"
+  },
+  {
+    "label": "NPR Howl",
+    "url": "https://www.youtube.com/watch?v=Qkq5CFGOBH4",
+    "icon": "/icons/nprhowl.png"
+  }
+]
