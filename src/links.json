@@ -1,41 +1,41 @@
 [
   {
-    "label": "Ars Technica",
+    "label": "ars",
     "url": "https://arstechnica.com/",
     "icon": "/icons/arstechnica.png"
   },
   {
-    "label": "Google News",
+    "label": "gnews",
     "url": "https://news.google.com/",
     "icon": "/icons/gnews.png"
   },
   {
-    "label": "YouTube",
+    "label": "ytsubs",
     "url": "https://www.youtube.com/feed/subscriptions",
     "icon": "/icons/ytube.png"
   },
   {
-    "label": "REI Capital One",
+    "label": "reicc",
     "url": "https://rei.capitalone.com/",
     "icon": "/icons/reicc.png"
   },
   {
-    "label": "Amazon",
+    "label": "amazon",
     "url": "https://www.amazon.com",
     "icon": "/icons/amazon.png"
   },
   {
-    "label": "The War Zone",
+    "label": "twz",
     "url": "https://www.twz.com",
     "icon": "/icons/warzone.png"
   },
   {
-    "label": "eBay",
+    "label": "ebay",
     "url": "https://www.ebay.com/mys/overview",
     "icon": "/icons/ebay.png"
   },
   {
-    "label": "NPR Howl",
+    "label": "nprhowl",
     "url": "https://www.youtube.com/watch?v=Qkq5CFGOBH4",
     "icon": "/icons/nprhowl.png"
   }
