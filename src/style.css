@@ -37,6 +37,20 @@ body {
 }
 
 /* =============================================================================
+ * Blur backdrop — optional frosted glass panel behind the grid
+ * ========================================================================== */
+
+#app.blur-backdrop {
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 48px 24px 40px;
+  min-height: 100vh;
+  align-content: start;
+}
+
+/* =============================================================================
  * Header — Page title above the grid
  * ========================================================================== */
 

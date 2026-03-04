@@ -34,7 +34,7 @@ Boilerplate files removed after scaffolding:
 | `index.html` | App shell with iOS-optimized meta tags |
 | `src/main.ts` | Entry point — loads config and link data, renders the grid |
 | `src/types.ts` | `QuickLink` and `SiteConfig` interface definitions |
-| `src/config.json` | Site-wide settings (background color, background image) |
+| `src/config.json` | Site-wide settings (header text, background color/image, blur backdrop) |
 | `src/links.json` | Link definitions (label, url, icon path) |
 | `src/style.css` | Dark theme, responsive CSS grid, touch feedback |
 | `public/icons/*.png` | Site icons (sourced from apple-touch-icons / Google favicon API) |
@@ -145,7 +145,8 @@ Site-wide settings live in `src/config.json`:
 {
   "header_text": "my qlinks> ",
   "background_color": "#1c1c1e",
-  "background_img": null
+  "background_img": null,
+  "blur_backdrop": false
 }
 ```
 
@@ -154,6 +155,7 @@ Site-wide settings live in `src/config.json`:
 | `header_text` | string | Text displayed in the page header above the grid |
 | `background_color` | string | CSS color applied to `body` — any valid CSS value (`#rrggbb`, `rgb()`, named color, etc.) |
 | `background_img` | string \| null | Path to an image under `public/` (e.g. `"/bg/wallpaper.jpg"`), or `null` for no image |
+| `blur_backdrop` | boolean | When `true`, renders a semi-opaque frosted glass panel behind the grid, extending to full viewport height. Defaults to `false` if missing or invalid. |
 
 When `background_img` is set, the image is rendered `cover`-sized and fixed
 (no scroll parallax).  The color still shows through if the image has
@@ -244,7 +246,7 @@ Use the largest size available for the best result in the grid.
 ### Tips
 
 - **Save as PNG** — the grid renders `<img>` tags, so PNG works universally
-- **Keep sizes consistent** — 128x128 or 180x180 work well in the 4-column
-  grid; larger files are fine since Vite doesn't resize them
+- **Keep sizes consistent** — 128x128 or 180x180 work well in the grid;
+  larger files are fine since Vite doesn't resize them
 - **Check visually** — some apple-touch-icons have tight padding or odd
   backgrounds; the Google API result might actually look better in some cases

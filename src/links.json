@@ -43,5 +43,10 @@
     "label": "t3chat",
     "url": "https://t3.chat",
     "icon": "/icons/t3chat.png"
+  },
+  {
+    "label": "cr-new",
+    "url": "https://www.crunchyroll.com/videos/new",
+    "icon": "/icons/crunchy.png"
   }
 ]

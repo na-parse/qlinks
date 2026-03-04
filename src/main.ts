@@ -4,18 +4,18 @@ import links from './links.json'
 import config from './config.json'
 
 // =============================================================================
-// Renderer — Build the grid from link data
-// =============================================================================
-
-// =============================================================================
 // Background — apply config to body
 // =============================================================================
 
-const { header_text, background_color, background_img } = config as SiteConfig
+const cfg = config as SiteConfig
+const blur_backdrop = cfg.blur_backdrop === true
 
-document.body.style.backgroundColor = background_color
-if (background_img) {
-  document.body.style.backgroundImage = `url('${background_img}')`
+document.body.style.backgroundColor = cfg.background_color
+if (cfg.background_img) {
+  document.body.style.backgroundImage = `url('${cfg.background_img}')`
+}
+if (blur_backdrop) {
+  document.getElementById('app')?.classList.add('blur-backdrop')
 }
 
 const app = document.querySelector<HTMLDivElement>('#app')!
@@ -26,7 +26,7 @@ const app = document.querySelector<HTMLDivElement>('#app')!
 
 const header = document.createElement('h1')
 header.className = 'qlinks-header'
-header.textContent = header_text
+header.textContent = cfg.header_text
 app.appendChild(header)
 
 // =============================================================================

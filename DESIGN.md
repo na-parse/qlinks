@@ -72,6 +72,13 @@ The page background is configurable independently of the tile content:
 
 When no image is configured, only the color applies.
 
+- **Blur backdrop:** An optional frosted glass panel rendered behind the grid.
+  When enabled, the grid container gets a semi-opaque dark fill and a blur
+  filter applied to whatever is behind it (the background image).  The panel
+  extends to full viewport height regardless of how many tiles are present.
+  Intended for use with a background image; has no visible effect over a plain
+  solid color background.
+
 ---
 
 ## Configuration
@@ -86,6 +93,7 @@ A single key/value config file controls site-wide appearance:
 | `header_text` | string | Text displayed in the page header above the grid |
 | `background_color` | string | CSS color for the page background |
 | `background_img` | string or null | Path to a background image, or null for none |
+| `blur_backdrop` | boolean | When true, renders a frosted glass panel behind the grid |
 
 ### Link definitions
 An ordered list of link entries.  Each entry defines one tile:
