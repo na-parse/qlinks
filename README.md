@@ -1,8 +1,8 @@
 # qlinks
 
-A mobile-first quick-links homepage that replicates Safari's Favorites grid
-view, designed for use as a new-tab/homepage in Firefox (or other browsers)
-on iPhone 14 Pro.
+A quick-links homepage designed for use as a new-tab/homepage in Firefox (or
+other browsers) across phones, tablets, and desktop browsers.  Icons fill
+columns dynamically based on viewport width.
 
 Hosted as static files behind nginx at `https://qlinks.unit03.net`.
 
@@ -32,10 +32,11 @@ Boilerplate files removed after scaffolding:
 | File | Purpose |
 |---|---|
 | `index.html` | App shell with iOS-optimized meta tags |
-| `src/main.ts` | Entry point — loads link data, renders the grid |
-| `src/types.ts` | `QuickLink` interface definition |
+| `src/main.ts` | Entry point — loads config and link data, renders the grid |
+| `src/types.ts` | `QuickLink` and `SiteConfig` interface definitions |
+| `src/config.json` | Site-wide settings (background color, background image) |
 | `src/links.json` | Link definitions (label, url, icon path) |
-| `src/style.css` | Dark theme, 4-column CSS grid, touch feedback |
+| `src/style.css` | Dark theme, responsive CSS grid, touch feedback |
 | `public/icons/*.png` | Site icons (sourced from apple-touch-icons / Google favicon API) |
 | `public/favicon.ico` | Placeholder favicon |
 | `vite.config.ts` | Vite config with `allowedHosts: true` for LAN dev access |
@@ -105,8 +106,8 @@ server {
         add_header Cache-Control "public, immutable";
     }
 
-    # Cache icons (update cache when icons change)
-    location /icons/ {
+    # Cache icons and background images (update cache when files change)
+    location ~* ^/(icons|bg)/ {
         expires 7d;
         add_header Cache-Control "public";
     }
@@ -135,6 +136,36 @@ After adding the config:
 nginx -t            # validate config
 systemctl reload nginx
 ```
+
+## Site Configuration
+
+Site-wide settings live in `src/config.json`:
+
+```json
+{
+  "header_text": "my qlinks> ",
+  "background_color": "#1c1c1e",
+  "background_img": null
+}
+```
+
+| Field | Type | Description |
+|---|---|---|
+| `header_text` | string | Text displayed in the page header above the grid |
+| `background_color` | string | CSS color applied to `body` — any valid CSS value (`#rrggbb`, `rgb()`, named color, etc.) |
+| `background_img` | string \| null | Path to an image under `public/` (e.g. `"/bg/wallpaper.jpg"`), or `null` for no image |
+
+When `background_img` is set, the image is rendered `cover`-sized and fixed
+(no scroll parallax).  The color still shows through if the image has
+transparency or fails to load.
+
+To use a background image:
+
+1. Place the image anywhere under `public/` (e.g. `public/bg/wallpaper.jpg`)
+2. Set `"background_img": "/bg/wallpaper.jpg"` in `config.json`
+3. Rebuild and deploy
+
+To revert to a solid color, set `"background_img": null`.
 
 ## Editing Links
 

@@ -1,10 +1,22 @@
 import './style.css'
-import type { QuickLink } from './types.ts'
+import type { QuickLink, SiteConfig } from './types.ts'
 import links from './links.json'
+import config from './config.json'
 
 // =============================================================================
 // Renderer — Build the grid from link data
 // =============================================================================
+
+// =============================================================================
+// Background — apply config to body
+// =============================================================================
+
+const { header_text, background_color, background_img } = config as SiteConfig
+
+document.body.style.backgroundColor = background_color
+if (background_img) {
+  document.body.style.backgroundImage = `url('${background_img}')`
+}
 
 const app = document.querySelector<HTMLDivElement>('#app')!
 
@@ -14,7 +26,7 @@ const app = document.querySelector<HTMLDivElement>('#app')!
 
 const header = document.createElement('h1')
 header.className = 'qlinks-header'
-header.textContent = 'na-parse qlinks> '
+header.textContent = header_text
 app.appendChild(header)
 
 // =============================================================================

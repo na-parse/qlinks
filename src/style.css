@@ -10,7 +10,6 @@
 
 html, body {
   height: 100%;
-  background-color: #1c1c1e;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text',
     'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -18,16 +17,22 @@ html, body {
   user-select: none;
 }
 
+body {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
 /* =============================================================================
- * Grid — 4-column layout
+ * Grid — responsive auto-fill layout
  * ========================================================================== */
 
 #app {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: 24px 12px;
   padding: 48px 16px 32px;
-  max-width: 390px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
