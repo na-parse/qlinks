@@ -38,5 +38,10 @@
     "label": "nprhowl",
     "url": "https://www.youtube.com/watch?v=Qkq5CFGOBH4",
     "icon": "/icons/nprhowl.png"
+  },
+  {
+    "label": "t3chat",
+    "url": "https://t3.chat",
+    "icon": "/icons/t3chat.png"
   }
 ]
